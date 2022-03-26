@@ -13,6 +13,7 @@ Configs
 void setup()
 {
   _TotalKeys = sizeof(PinDeck_Config1) / sizeof(PinDeck_Config1[0]);
+  Serial.begin(9600);
 }
 
 void loop()
@@ -21,11 +22,13 @@ void loop()
   {
     while (digitalRead(PinDeck_Config1[i].Pin))
     {
+      Serial.println("Key pressed: " + PinDeck_Config1[i].Pin);
       //Functionality for Chord Based Macros
       if (PinDeck_Config1->KeyType == PinkeyType::Chord)
       {
         for (int j = 0; j < MAX_STROKES; j++)
         {
+          Serial.println("Chord key: " + PinDeck_Config1[i].Keys[j]);
           if(PinDeck_Config1[i].Keys[j] == 0){
             continue;
           }
@@ -37,6 +40,7 @@ void loop()
       if(PinDeck_Config1->KeyType == PinkeyType::Sequence){
         for (size_t j = 0; j < MAX_STROKES; j++)
         {
+          Serial.println("Sequence key: " + PinDeck_Config1[i].Keys[j]);
           if(PinDeck_Config1[i].Keys[j] == 0){
             continue;
           }
