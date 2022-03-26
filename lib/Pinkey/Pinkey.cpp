@@ -1,7 +1,5 @@
 #include <Arduino.h>
 #include "Keyboard.h"
-#include <vector>
-
 
 #ifndef PINKEY
 #define PINKEY
@@ -12,7 +10,7 @@ enum PinkeyType {
 };
 struct Pinkey {
     short Pin;
-    std::vector<uint8_t> Keys;
+    uint8_t Keys[4];
     PinkeyType KeyType;
 };
 

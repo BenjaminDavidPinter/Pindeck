@@ -4,6 +4,7 @@
 #include <KeyDefinitions.cpp>
 
 int _TotalKeys;
+static const int MAX_STROKES = 4;
 
 /*
 Configs
@@ -23,19 +24,19 @@ void loop()
       //Functionality for Chord Based Macros
       if (PinDeck_Config1->KeyType == PinkeyType::Chord)
       {
-        for (size_t j = 0; j < PinDeck_Config1[i].Keys.size(); j++)
+        for (int j = 0; j < MAX_STROKES; j++)
         {
-          Keyboard.press(PinDeck_Config1[i].Keys.at(j));
+          Keyboard.press(PinDeck_Config1[i].Keys[j]);
         }
       }
 
       //Functionality for Sequential Macros
       if(PinDeck_Config1->KeyType == PinkeyType::Sequence){
-        for (size_t j = 0; j < PinDeck_Config1[i].Keys.size(); j++)
+        for (size_t j = 0; j < MAX_STROKES; j++)
         {
-          Keyboard.press(PinDeck_Config1[i].Keys.at(j));
+          Keyboard.press(PinDeck_Config1[i].Keys[j]);
           delay(250);
-          Keyboard.release(PinDeck_Config1[i].Keys.at(j));
+          Keyboard.release(PinDeck_Config1[i].Keys[j]);
         }
       }
     }
