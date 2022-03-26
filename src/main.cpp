@@ -26,6 +26,9 @@ void loop()
       {
         for (int j = 0; j < MAX_STROKES; j++)
         {
+          if(PinDeck_Config1[i].Keys[j] == 0){
+            continue;
+          }
           Keyboard.press(PinDeck_Config1[i].Keys[j]);
         }
       }
@@ -34,6 +37,9 @@ void loop()
       if(PinDeck_Config1->KeyType == PinkeyType::Sequence){
         for (size_t j = 0; j < MAX_STROKES; j++)
         {
+          if(PinDeck_Config1[i].Keys[j] == 0){
+            continue;
+          }
           Keyboard.press(PinDeck_Config1[i].Keys[j]);
           delay(250);
           Keyboard.release(PinDeck_Config1[i].Keys[j]);
